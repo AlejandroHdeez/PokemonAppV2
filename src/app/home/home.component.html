@@ -1,0 +1,29 @@
+<div class="search-container">
+  <img src="https://archives.bulbagarden.net/media/upload/4/4b/Pok%C3%A9dex_logo.png" alt="Pokedex Logo" class="logo">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Buscar Pokemon</mat-label>
+      <input matInput formControlName="search">
+      <button mat-icon-button matSuffix (click)="onSubmit()">
+        <mat-icon>search</mat-icon>
+      </button>
+    </mat-form-field>
+    <div class="buttons">
+      <button mat-stroked-button color="primary" type="submit">Buscar</button>
+    </div>
+  </form>
+  <div *ngIf="filteredPokemons.length > 0" class="results mb-2" style="margin-bottom: 50px !important;">
+    <h3>Resultados encontrados:</h3>
+    <div class="cards">
+      <mat-card *ngFor="let pokemon of filteredPokemons" class="card" (click)="viewDetails(pokemon.url)">
+        <mat-card-title>{{ pokemon.name }}</mat-card-title>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="viewDetails(pokemon.url)">Ver Detalle</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+  <div *ngIf="noResults" class="results">
+    <p>No se encontro ningun pokemon... :C</p>
+  </div>
+</div>

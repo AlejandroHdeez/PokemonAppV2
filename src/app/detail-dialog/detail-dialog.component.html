@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Detalles</h1>
+<div mat-dialog-content>
+  <p><strong>Name:</strong> {{data.name}}</p>
+  <p><strong>ID:</strong> {{data.id}}</p>
+  <img [src]="data.sprites.front_default" alt="{{data.name}}">
+  <p><strong>Height:</strong> {{data.height}}</p>
+  <p><strong>Weight:</strong> {{data.weight}}</p>
+  <p><strong>Base Experience:</strong> {{data.base_experience}}</p>
+  <p><strong>Types:</strong> <span *ngFor="let type of data.types">{{ type.type.name }} </span></p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Close</button>
+</div>
